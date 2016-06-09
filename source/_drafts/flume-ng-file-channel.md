@@ -1,0 +1,19 @@
+---
+title: Flume-ng中FileChannel详解
+tags: [flume,filechannel]
+categories: 技术
+---
+本文主要从源代码的层面说明`FileChannel`是如何工作的。
+
+##### **FileChannel实现**
+主要有FileChannel、FileBackedTransaction、FlumeEventQueue、FlumeEventPointer、Log等类，比MemoryChannel要复杂很多。
+
+FileChannel委托FileBackedTransaction做实际的putEvent/takeEvent/commit/rollback操作，每个线程的FileBackedTransaction拥有一个long类型的transactionID(确定写入文件编号)、一个putDeque和takeDeque(类似MemoryTransaction)，以及一个FlumeEventQueue(用来缓存FlumeEventPointer和transactionID)，依赖Log对象，记录Event到不同的文件，并返回FlumeEventPointer,写入对象有Put|Take|Commit|Rollback几种类型，并且有一个全局的order，使用protobuf做序列化和反序列化。
+
+操作说明：
+
+- putEvent操作Log会根据transactionID和Event写入到文件中(Put)，写入后会得到一个FlumeEventPointer，FlumeEventPointer记录写入的文件ID以及offset，然后会将FlumeEventPointer记录到putDeque中，然后将transactionID和FlumeEventPointer(以long的形式)记录到FlumeEventQueue中
+- takeEvent操作会从FlumeEventQueue中取出对应transactionID的FlumeEventPointer，按顺序将FlumeEventPointer数据offer到takeDeque中，调用Log写transactionID的FlumeEventPointer数据到磁盘(Take)，调用Log查询真正的Event数据
+- commit操作，如果putDeque的size>0，调用Log，将Put的Commit数据写入磁盘，然后把putDeque中的数据按顺移动到FlumeEventQueue中，如果takeDeque的size>0，调用Log，将Take的Commit数据写入磁盘，然后把FlumeEventQueue中对应transactionID的记录移除，清空putDeque和takeDeque
+- rollback操作将takeDeque的数据移回FlumeEventQueue中，清空putDeque和takeDeque
+- commit和rollback操作都会重新计算Channel缓冲的Event大小
