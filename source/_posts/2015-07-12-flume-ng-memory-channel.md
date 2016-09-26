@@ -8,7 +8,7 @@ categories: 技术
 
 ### 00 概述
 MemoryChannel是使用纯内存缓冲Event的Channel实现，所以速度上比较快速，容量不会太大，可靠性不够，所以适用一些可以丢数据，但对性能要求较高的业务。
-
+<!-- more -->
 ### 01 实现原理
 主要类：`MemoryChannel`和`MemoryTransaction`
 
@@ -26,7 +26,13 @@ MemoryChannel这样的实现很简单，逻辑上也没啥问题，但是在看�
 
 LinkedBlockingDeque是Thread-Safe，MemoryTransaction也不存在并发问题(ThreadLocal)，对同一个Thread来说，不可能同时take/commit/rollback，而synchronized即使没有锁貌似也会有一些额外的操作，性能会差一点点
 
-官方描述drainTo有一句话`This operation may be more efficient than repeatedly polling this queue`
+官方描述drainTo有一句话
+
+```
+This operation may be more efficient than repeatedly polling this queue
+```
+
+使用drainTo的性能应该会更好。
 
 ### 03 总结
 MemoryChannel很简单，但是官方的实现并不完美，应该有优化的空间，感觉支持Transaction也有点鸡肋。

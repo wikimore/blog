@@ -6,7 +6,7 @@ tags: [java,concurrency]
 categories: 技术
 ---
 CyclicBarrier是juc包下一个并发辅助类，类似于CountDownLatch，但又不同，CyclicBarrier保证一组线程在同一个地方互相等待，直到最后一个线程到来后，然后一起再继续向下执行。
-
+<!-- more -->
 CyclicBarrier提供了一个叫做`Generation(代/批)`的概念，每个`Generation`的线程由该`Generation`最后一个到达的唤醒其他先到的线程，一个CyclicBarrier允许有N个`Generation`。
 
 CyclicBarrier初始化支持两个参数:

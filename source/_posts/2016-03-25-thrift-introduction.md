@@ -8,6 +8,7 @@ categories: 技术
 
 Thrift是ASF支持下的一个跨语言的RPC框架，类似的有avro、protobuf等，最大的优点应该就是支持的语言特别多。
 
+<!-- more -->
 使用Thrift最关键的一点应该是要弄懂他的IDL(Interface Description Language)，[官方的文档](http://thrift.apache.org/docs/idl)还是有比较详细的说明的，主流的数据结构都有支持，也支持结构体、共同体、枚举类型，但是不提供继承关系(序列化的原因)，唯一可以继承的就是service，这样可以写一些通用的东西到一个service中，然后其他的业务service可以继承该service，还有就是可以自定义exception。
 
 Thrift项目主要分为2个部分

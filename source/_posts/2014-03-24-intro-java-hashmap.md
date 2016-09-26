@@ -12,6 +12,8 @@ Hash这个数据结构的实现有2种方式来解决hash冲突:`开放地址Has
 
 本文不介绍`开放地址Hash法`,因为Java的HashMap是用`链表法`实现的.
 
+<!-- more -->
+
 下图是HashMap的属性结构
 
 ![image](/assets/img/hashmap_attr.png)

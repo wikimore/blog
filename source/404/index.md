@@ -5,7 +5,6 @@ toc: false
 comments: false
 permalink: /404
 ---
-<!DOCTYPE HTML>
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8;"/>
@@ -15,7 +14,7 @@ permalink: /404
 </head>
 <body>
 
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homePageUrl="your site url " homePageName="回到我的主页"></script>
+<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homePageUrl="http://wikimore.github.io" homePageName="回到我的主页"></script>
 
 </body>
 </html>

@@ -5,7 +5,10 @@ date: 2014-12-27 16:38:40
 tags: maven
 categories: 技术
 ---
-Maven是我平时开发主要使用到的构建工具，主要命令包括：
+Maven是一个Java语言编写的项目依赖和构建工具。
+<!-- more -->
+
+Maven常用命令包括：
 
 - clean
 - test

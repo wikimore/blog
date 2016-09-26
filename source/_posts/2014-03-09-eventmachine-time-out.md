@@ -7,6 +7,7 @@ categories: 技术
 ---
 
 工作中负责实现thrift的eventmachine客户端版本,在实现过程中就遇到了读写timeout如何实现的问题.
+<!-- more -->
 
 eventmachine的connection有两个连接的参数`pending_connect_timeout`和`comm_inactivity_timeout`,但就是没有read和write的timeout的配置参数,这样的话,业务调用就没有超时,根本不能够在线上使用.
 

@@ -6,7 +6,7 @@ tags: [java,concurrency]
 categories: 技术
 ---
 CountDownLatch是juc包下一个非常简单的并发辅助类，提供线程间等待的支持，如一组线程A等待另外一组线程B完成某些操作后(一组可以是一个或者多个线程)，才能继续执行时，可以使用CountDownLatch来完成控制。
-
+<!-- more -->
 CountDownLatch主要提供两个方法：`await`和`countdown`，内部类`Sync`继承了AQS，实现类似共享模式的同步机制。
 
 `await`从字面上理解就是等待，当然实现也确实是等待，实现通过调用内部的sync对象来等待。

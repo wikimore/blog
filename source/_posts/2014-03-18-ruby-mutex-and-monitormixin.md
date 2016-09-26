@@ -8,6 +8,7 @@ categories: 技术
 
 使用eventmachine和fiber的过程中发现一些以前OK的同步/锁功能的代码会出错,查资料发现ruby有两种线程间同步方式.
 
+<!-- more -->
 一种同步方式是使用Mutex,但是它有一定的局限性,见下面的代码
 
 ```ruby

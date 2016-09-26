@@ -14,7 +14,7 @@ Flume从宏观上主要分为3个模块：
 - Source：数据来源，如日志，消息中间件等
 - Channel：管道，传输、缓冲数据，如文件系统、内存等，我们可以将Channel理解为管道或者队列
 - Sink：数据目的地，如HDFS等
-
+<!-- more -->
 数据从Source ----> Channel ----> Sink可能再到其他的Source ----> Channel ----> Sink，最终到达目的地。
 
 Flume通过Agent将上面三个模块合理的组织起来，Agent可以想象成一个搬运工，数据从A收集到B，中间可能经历1-N个搬运工。

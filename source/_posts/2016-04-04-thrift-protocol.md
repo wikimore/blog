@@ -8,7 +8,7 @@ tags: [rpc,thrift]
 categories: 技术
 ---
 本文主要说明Thrift如何序列化和反序列化数据。主要分析为什么在客户端调用method，服务端会执行对应的method，同时客户端能够获取到返回值，中间都发生了什么。
-
+<!-- more -->
 Thrift序列化的核心类是`TProtocol`，这是一个抽象类，主要实现有：
 - `TBinaryProtocol`：二进制协议
 - `TCompactProtocl`：带压缩的二进制(其实只对i16、i32、i64这3种类型以及field的编号进行压缩，详细可以搜索zigzag编码)
@@ -110,3 +110,4 @@ string使用UTF-8编码成byte数组。
 - 如果参数或者返回值是`map`、`set`、`list`实例，该实例不能被其他线程修改，否则会报协议错误或者超时(大家可以想下是为什么)
 
 以上基本解释了Thrift的协议格式以及不同类型的序列化格式，还有我使用过程中遇到的一些坑，希望对大家理解Thrift有所帮助。
+
