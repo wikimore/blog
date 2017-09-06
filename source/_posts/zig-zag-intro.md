@@ -6,8 +6,6 @@ tags: [zigzag,varint]
 categories: 技术
 ---
 
-## 介绍
-
 对于二进制编码，经常需要对数据进行压缩以节省空间，varint可以压缩较小的正数，但是对于负数varint反而更浪费空间，zigzag编码可以处理负数，使负数也可以使用varint编码压缩，protobuf和thrift都使用二者结合的方式来压缩数字类型。
 
 <!-- more -->

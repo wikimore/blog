@@ -6,9 +6,9 @@ tags: [mybatis]
 categories: 技术
 ---
 
-#### 概述
 最近升级到Spring4.x，DAO层也同步升级到最新版本的mybatis，写了一些代码生成插件，同时也学习下mybatis，不过代码注释确实不多，不过主流程还算能够看懂。
 
+<!-- more -->
 理解mybatis的调用流程，先确定核心的几个类：
 
 - Configuration
@@ -18,8 +18,6 @@ categories: 技术
 - StatementHandler
 
 通过这些类，组成了mybatis核心调用流程。
-
-<!-- more -->
 
 #### Configuration
 
